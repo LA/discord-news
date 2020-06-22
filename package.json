@@ -1,0 +1,18 @@
+{
+  "name": "discord-news",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Adar <14169758+LA@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "cron": "^1.8.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
+}
