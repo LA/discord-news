@@ -50,18 +50,24 @@ const sendWebhook = async (url, articles) => {
   }
 };
 
-const job = new CronJob("0 30 5 * * *", () => {
-  fetchNews()
-    .then(async (news) => {
-      try {
-        for (let key of Object.keys(WEBHOOKS)) {
-          await sendWebhook(WEBHOOKS[key], news[key]);
+const job = new CronJob(
+  "0 30 5 * * *",
+  () => {
+    fetchNews()
+      .then(async (news) => {
+        try {
+          for (let key of Object.keys(WEBHOOKS)) {
+            await sendWebhook(WEBHOOKS[key], news[key]);
+          }
+        } catch (err) {
+          console.error("Failed to send webhook");
         }
-      } catch (err) {
-        console.error("Failed to send webhook");
-      }
-    })
-    .catch((err) => console.log(err.response.data.content));
-});
+      })
+      .catch((err) => console.log(err.response.data.content));
+  },
+  null,
+  true,
+  "America/Los_Angeles"
+);
 
 job.start();
