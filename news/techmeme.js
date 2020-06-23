@@ -8,7 +8,7 @@ module.exports = async () => {
 
   const $ = cheerio.load(data);
 
-  $(".nav_away").each(function () {
+  $("#top_items .nav_away").each(function () {
     const container = $(this).find("a").first();
     const url = container.attr("href");
     const source = container.find(".cite").text();
