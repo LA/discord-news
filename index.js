@@ -1,6 +1,7 @@
 const axios = require("axios");
 const CronJob = require("cron").CronJob;
 const fetchNews = require("./news");
+const { DateTime } = require("luxon");
 
 const chunkArrayInGroups = (arr, size) => {
   var myArray = [];
@@ -18,6 +19,11 @@ const WEBHOOKS = {
 };
 
 const sendWebhook = async (url, articles) => {
+  await axios.post(url, {
+    content: `Techmeme News for **${DateTime.utc().toLocaleString(
+      DateTime.DATE_HUGE
+    )}**`,
+  });
   for (let chunk of chunkArrayInGroups(articles, 10)) {
     let embeds = [];
     for (let item of chunk) {
