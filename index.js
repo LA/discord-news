@@ -37,7 +37,9 @@ const sendWebhook = async (url, articles) => {
         embeds.push({
           title,
           url: item.url,
-          description: `[Click to Tweet](https://www.twitter.com/share?text=${title}%20${item.url})`,
+          description: `[Click to Tweet](https://www.twitter.com/share?text=${title
+            .split(" ")
+            .join("%20")}%20${item.url})`,
           author: {
             name: item.source.split("\n").join("").split(":").join(""),
           },
