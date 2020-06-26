@@ -27,16 +27,18 @@ const sendWebhook = async (url, articles) => {
   for (let chunk of chunkArrayInGroups(articles, 10)) {
     let embeds = [];
     for (let item of chunk) {
+      const title = item.title
+        .split("' +")
+        .join("")
+        .split("'")
+        .join("")
+        .split("\n")
+        .join("");
       if (item.url.startsWith("www.") || item.url.startsWith("http")) {
         embeds.push({
-          title: item.title
-            .split("' +")
-            .join("")
-            .split("'")
-            .join("")
-            .split("\n")
-            .join(""),
+          title,
           url: item.url,
+          description: `[Click to Tweet](https://www.twitter.com/share?text=${title}%20${item.url})`,
           author: {
             name: item.source.split("\n").join("").split(":").join(""),
           },
