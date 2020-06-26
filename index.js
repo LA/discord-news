@@ -14,8 +14,7 @@ const chunkArrayInGroups = (arr, size) => {
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const WEBHOOKS = {
-  techmeme:
-    "https://discordapp.com/api/webhooks/724416630549118986/NeElmXAOIXfbWeJaluIP58LmQKAgep5i4LVVjBL3sLnYxFrIr8JT1_hHvtcXoblYzdN1",
+  techmeme: process.env.TECHMEME_DISCORD_WEBHOOK_URL,
 };
 
 const sendWebhook = async (url, articles) => {
