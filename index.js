@@ -37,9 +37,10 @@ const sendWebhook = async (url, articles) => {
         embeds.push({
           title,
           url: item.url,
-          description: `[Click to Tweet](https://www.twitter.com/share?text=${title
-            .split(" ")
-            .join("%20")}%20${item.url})`,
+          // TODO: On mobile this method of URL generation fills the tweet with %20 as opposed to on desktop where it decodes correctly.
+          // description: `[Click to Tweet](https://www.twitter.com/share?text=${title
+          //   .split(" ")
+          //   .join("%20")}%20${item.url})`,
           author: {
             name: item.source.split("\n").join("").split(":").join(""),
           },
