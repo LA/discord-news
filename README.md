@@ -1,0 +1,1 @@
+Requires `TECHMEME_DISCORD_WEBHOOK_URL` env
